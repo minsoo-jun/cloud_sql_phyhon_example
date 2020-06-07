@@ -139,36 +139,6 @@ def create_tables():
             "); "
         )
 
-def save_vote(report_id, report_result):
-    print('save_vote')
-
-    # [START cloud_sql_mysql_sqlalchemy_connection]
-    # Preparing a statement before hand can help protect against injections.
-    stmt = sqlalchemy.text(
-        "INSERT INTO report ( id, result)" " VALUES ( :report_id, :report_result )"
-    )
-    try:
-        # Using a with statement ensures that the connection is always released
-        # back into the pool at the end of statement (even if an error occurs)
-        with db.connect() as conn:
-            conn.execute(stmt, time_cast=time_cast, report_id=report_id, report_result=report_result)
-    except Exception as e:
-        # If something goes wrong, handle the error in this section. This might
-        # involve retrying or adjusting parameters depending on the situation.
-        # [START_EXCLUDE]
-        return Response(
-            status=500,
-            response="Unable to successfully insert inspect report ! Please check the "
-                     "application logs for more details.",
-        )
-        # [END_EXCLUDE]
-    # [END cloud_sql_mysql_sqlalchemy_connection]
-
-    return Response(
-        status=200,
-        response="inspect report successfully cast for '{}' at time {}!".format(report_id, time_cast),
-    )
-
 # [START run_pubsub_handler]
 @app.route('/', methods=['POST'])
 def index():
