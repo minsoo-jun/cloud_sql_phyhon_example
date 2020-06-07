@@ -127,9 +127,9 @@ def create_tables():
     print('create_tables')
     # Create tables (if they don't already exist)
     with db.connect() as conn:
-        conn.execute(
-            "DROP TABLE  report ;  "
-        )
+#        conn.execute(
+#            "DROP TABLE  report ;  "
+#        )
         conn.execute(
             "CREATE TABLE IF NOT EXISTS report ( "
             "pk MEDIUMINT NOT NULL AUTO_INCREMENT, "

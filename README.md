@@ -6,12 +6,13 @@ https://github.com/GoogleCloudPlatform/python-docs-samples/tree/master/cloud-sql
 
 ## Packaging
 ```shell script
-export PROJECT_ID="minsoojunprj"
-export INSTANCE_CONNECTION_NAME="minsoojunprj:us-central1:inspections"
+export PROJECT_ID="<< Your Project ID >>"
+export INSTANCE_CONNECTION_NAME="<< SQL Connection Name >>"
 export MY_DB_USER="store-service"
-export MY_DB_PASS="store-service"
-export MY_DB="inspection_reports"
+export MY_DB_PASS="<< DB PASSWORD >>"
+export MY_DB="<< Database Name >>"
 export SUBSCRIPTION_NAME="new-lab-report"
+
 
 gcloud builds submit --tag gcr.io/$PROJECT_ID/store-service
 
